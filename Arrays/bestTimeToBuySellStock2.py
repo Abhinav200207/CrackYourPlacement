@@ -1,12 +1,13 @@
 class Solution(object):
     def maxProfit(self, v):
         n = len(v)
-        dp = [0]*(n)
-        dp[0] = 0
+        curr = 0
+        prev = 0
         for i in range(1,n):
             if (v[i-1] >= v[i]):
-                dp[i] = dp[i - 1]
+                curr = prev
             else:
-                dp[i] = dp[i - 1] + (v[i] - v[i - 1])
-        return dp[n - 1]
+                curr = prev + (v[i] - v[i - 1])
+                prev = curr
+        return curr
         
