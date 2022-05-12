@@ -13,7 +13,6 @@ public:
 
         int end = n - 1;
         int start = end / 2;
-        ;
 
         int i = 0;
         while (i < n)
