@@ -3,35 +3,32 @@ using namespace std;
 
 class Solution
 {
+    void dfs(map<int, vector<int>> mp, set<int> v, int a, vector<int> ans)
+    {
+        if (v.find(a) != v.end()) return;
+        ans.push_back(a);
+        v.insert(a);
+        for (auto i:mp[a]) dfs(mp,v,i,ans);
+    }
+
 public:
-    map<int, pair<int, vector<int>>> mp;
-    vector<int> startend;
-    vector<int> ans;
     vector<int> restoreArray(vector<vector<int>> &arr)
     {
-        for (int i = 0; i < arr.size(); i++)
+        map<int, vector<int>> mp;
+        for (auto i : arr)
         {
-            mp[arr[i][0]].first++;
-            mp[arr[i][0]].second.push_back(i);
-            mp[arr[i][1]].first++;
-            mp[arr[i][1]].second.push_back(i);
+            mp[i[0]].push_back(i[1]);
+            mp[i[1]].push_back(i[0]);
         }
+        int head;
         for (auto i : mp)
         {
-            if (i.second.first == 1)
-            {
-                startend.push_back(i.first);
-            }
+            if (i.second.size() == 1)
+                head = i.first;
         }
-        int j = 0;
-        ans.push_back(startend[0]);
-        ans.push_back(arr[mp[startend[0]].second[0]][0] == ans[0] ? arr[mp[startend[0]].second[0]][1] : arr[mp[startend[0]].second[0]][0]);
-        mp[startend[0]].first--;
-        while (j <= arr.size() + 1)
-        {
-            j++;
-            ans.push_back(arr[mp[j].second[mp[j].first]][0] == ans[j - 1] ? arr[mp[j].second[0]][1] : arr[mp[j].second[0]][0]);
-            mp[j].first--;
-        }
+        set<int> s;
+        vector<int> ans;
+
+        return ans;
     }
 };
