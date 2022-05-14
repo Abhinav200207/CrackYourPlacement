@@ -6,20 +6,20 @@ class Solution
 public:
     int nthUglyNumber(int n)
     {
-        vector<int> dp(n);
-        dp[0] = 1;
-        dp[1] = 2;
-        dp[2] = 3;
-        dp[3] = 4;
-        dp[4] = 5;
-        int i = 0;
-        while (true)
+        vector<int> dp;
+        dp.push_back(1);
+        int index2 = 0;
+        int index3 = 0;
+        int index5 = 0;
+        for (int i = 1; i < n; i++)
         {
-            // int dp[i + 1] = dp[i] * 2;
-            // int dp[i + 2] = dp[i] * 3;
-            // int dp[i] = dp[i] * 5;
-            // i++;
+            int temp = min(min(dp[index2] * 2, dp[index3] * 3), dp[index5] * 5);
+            if (temp == dp[index2] * 2){index2++;}
+            if (temp == dp[index3] * 3){index3++;}
+            if (temp == dp[index5] * 5){index5++;}
+            dp.push_back(temp);
         }
+        return dp[n - 1];
     }
 };
 
@@ -50,39 +50,3 @@ public:
         return dp[n - 1];
     }
 };
-
-typedef unsigned long long int ll;
-class Solution
-{
-public:
-    int nthUglyNumber(int n)
-    {
-        vector<ll> ans;
-        ans.push_back(1);
-
-        int idx2 = 0;
-        int idx3 = 0;
-        int idx5 = 0;
-
-        for (int i = 1; i < n; i++)
-        {
-            int next = min(
-                ans[idx2] * 2,
-                min(
-                    ans[idx3] * 3,
-                    ans[idx5] * 5));
-
-            ans.push_back(next);
-            if (next % 2 == 0)
-                idx2++;
-            if (next % 3 == 0)
-                idx3++;
-            if (next % 5 == 0)
-                idx5++;
-        }
-        return ans[n - 1];
-    }
-};
-
-// n = 10;
-// 
