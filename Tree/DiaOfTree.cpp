@@ -14,13 +14,12 @@ struct TreeNode
 class Solution
 {
     int ans = 0;
-    int lh, rh;
     int height(TreeNode *root)
     {
         if (!root) return 0;
         
-        lh = height(root->left);
-        rh = height(root->right);
+        int lh = height(root->left);
+        int rh = height(root->right);
         ans = max(ans, lh + rh);
         return 1 + max(lh, rh);
     }
