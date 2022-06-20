@@ -35,8 +35,10 @@ public:
         vector<int> ans(points.size(),0);
         for (int i = 0; i < points.size(); i++)
         {
-            int temp = v1.size() - next(v1, points[i][0], v1.size());
-            
+            int temp = next(v1, points[i][0], v1.size());
+            if (rectangles[v1[temp].second][1] >= points[i][1]){
+                ans[i] = v1.size() - temp;
+            }
         }
         for (int i = 0; i < points.size(); i++)
         {
