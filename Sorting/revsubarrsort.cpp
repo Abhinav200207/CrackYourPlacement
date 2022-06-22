@@ -4,27 +4,20 @@ using namespace std;
 int solve(vector<int> nums, int n)
 {
     int cnt = 0;
-    int x = 0;
+    bool flag = false;
     for (int i = 1; i < nums.size(); i++)
     {
-        if (nums[i] < nums[i - 1])
+        if (nums[i] >= nums[i - 1])
         {
-            x++;
+            flag = false;
         }
-        if (nums[i] >= nums[i - 1] && x > 0)
+        if (nums[i] < nums[i - 1] && !flag)
         {
-            if (i - x - 2 > 0 && nums[i] < nums[i - x - 2])
-            {
-                return 0;
-            }
             cnt++;
-            x = 0;
+            flag = true;
         }
     }
-    if ((cnt == 1 && x == 0) || (cnt == 0 && x != 0) || (cnt == 0 && x == 0))
-    {
-        return 1;
-    }
+    cout << cnt << endl;
     return 0;
 }
 
@@ -37,4 +30,5 @@ int main()
     {
         cin >> v[i];
     }
+    cout << solve(v, n);
 }
