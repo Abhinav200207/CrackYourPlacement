@@ -1,7 +1,7 @@
 ﻿# CrackYourPlacement
 
 
-### Leetcode Profile: https://leetcode.com/user5258rl/
+### Leetcode Profile: https://leetcode.com/abhinavmaurya20022/
 
 ### GeeksForGeeks Profile: https://auth.geeksforgeeks.org/user/abhinavmaurya202/saved-articles/
 
